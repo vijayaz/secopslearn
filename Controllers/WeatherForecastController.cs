@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using System.Security.Cryptography;
 
 namespace secopslearn.Controllers
 {
@@ -27,8 +28,8 @@ namespace secopslearn.Controllers
         public IEnumerable<WeatherForecast> Get()
         {
             var rng = new Random();
-            var password = "testing";
-            System.Console.WriteLine(   password);
+             byte[] str = new byte[3];
+            var hash = new SHA1CryptoServiceProvider().ComputeHash(str);
             return Enumerable.Range(1, 5).Select(index => new WeatherForecast
             {
                 Date = DateTime.Now.AddDays(index),
