@@ -27,6 +27,8 @@ namespace secopslearn.Controllers
         public IEnumerable<WeatherForecast> Get()
         {
             var rng = new Random();
+            var password = "testing";
+            System.Console.WriteLine(   password);
             return Enumerable.Range(1, 5).Select(index => new WeatherForecast
             {
                 Date = DateTime.Now.AddDays(index),
