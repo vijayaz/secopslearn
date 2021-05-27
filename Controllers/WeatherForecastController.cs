@@ -28,8 +28,12 @@ namespace secopslearn.Controllers
         public IEnumerable<WeatherForecast> Get()
         {
             var rng = new Random();
-             byte[] str = new byte[3];
-            var hash = new SHA1CryptoServiceProvider().ComputeHash(str);
+             IEnumerable<int> nr = NonRepeatable();
+        foreach (int i in nr)
+            Console.WriteLine(i);
+
+        foreach (int i in nr)
+            Console.WriteLine(i);
             return Enumerable.Range(1, 5).Select(index => new WeatherForecast
             {
                 Date = DateTime.Now.AddDays(index),
@@ -38,5 +42,14 @@ namespace secopslearn.Controllers
             })
             .ToArray();
         }
+        private static int count = 1;
+
+    private static IEnumerable<int> NonRepeatable()
+    {
+        for (; count <= 3; count++)
+        {
+            yield return count;
+        }
+    }
     }
 }
