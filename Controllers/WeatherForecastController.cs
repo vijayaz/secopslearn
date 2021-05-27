@@ -34,6 +34,7 @@ namespace secopslearn.Controllers
 
         foreach (int i in nr)
             Console.WriteLine(i);
+            GC.Collect();
             return Enumerable.Range(1, 5).Select(index => new WeatherForecast
             {
                 Date = DateTime.Now.AddDays(index),
